@@ -33,7 +33,7 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
 
         if (activity != null) {
             val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[BookmarkViewModel::class.java]
-            val courses = viewModel.getBoorkmarks()
+            val courses = viewModel.getBookmark()
 
             val adapter = BookmarkAdapter(this)
             adapter.setCourses(courses)

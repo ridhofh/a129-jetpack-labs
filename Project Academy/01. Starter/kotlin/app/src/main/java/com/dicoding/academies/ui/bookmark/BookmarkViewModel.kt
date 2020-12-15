@@ -6,5 +6,5 @@ import com.dicoding.academies.utils.DataDummy
 
 class BookmarkViewModel : ViewModel() {
 
-    fun getBoorkmarks(): List<CourseEntity> = DataDummy.generateDummyCourses()
+    fun getBookmark(): List<CourseEntity> = DataDummy.generateDummyCourses()
 }

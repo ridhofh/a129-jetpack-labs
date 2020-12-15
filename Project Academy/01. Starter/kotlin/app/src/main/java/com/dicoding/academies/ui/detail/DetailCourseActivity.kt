@@ -43,7 +43,7 @@ class DetailCourseActivity : AppCompatActivity() {
         if (extras != null) {
             val courseId = extras.getString(EXTRA_COURSE)
             if (courseId != null) {
-                viewModel.selectedCourse(courseId)
+                viewModel.setSelectedCourse(courseId)
                 val modules = viewModel.getModules()
                 adapter.setModules(modules)
                 for (course in DataDummy.generateDummyCourses()) {
