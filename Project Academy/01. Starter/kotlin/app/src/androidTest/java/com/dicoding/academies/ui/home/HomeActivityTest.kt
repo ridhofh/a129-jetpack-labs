@@ -38,10 +38,11 @@ class HomeActivityTest {
 
     @Test
     fun loadDetailCourse(){
-        onView(withId(R.id.rv_academy)).perform(RecyclerViewActions
-                .actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
-        onView(withId(R.id.btn_start)).perform(click())
-        onView(withId(R.id.rv_module)).check(matches(isDisplayed()))
+        onView(withId(R.id.rv_academy)).perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+        onView(withId(R.id.text_title)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_title)).check(matches(withText(dummyCourse[0].title)))
+        onView(withId(R.id.text_date)).check(matches(isDisplayed()))
+        onView(withId(R.id.text_date)).check(matches(withText("Deadline ${dummyCourse[0].deadline}")))
     }
 
     @Test
