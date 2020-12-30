@@ -14,6 +14,7 @@ import com.dicoding.academies.databinding.FragmentModuleListBinding
 import com.dicoding.academies.ui.reader.CourseReaderActivity
 import com.dicoding.academies.ui.reader.CourseReaderCallback
 import com.dicoding.academies.ui.reader.CourseReaderViewModel
+import com.dicoding.academies.viewmodel.ViewModelFactory
 
 /**
  * A simple [Fragment] subclass.
@@ -41,7 +42,8 @@ class ModuleListFragment : Fragment(), MyAdapterClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity(), ViewModelProvider.NewInstanceFactory())[CourseReaderViewModel::class.java]
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        viewModel = ViewModelProvider(requireActivity(), factory)[CourseReaderViewModel::class.java]
         adapter = ModuleListAdapter(this)
         populateRecyclerView(viewModel.getModules())
 
