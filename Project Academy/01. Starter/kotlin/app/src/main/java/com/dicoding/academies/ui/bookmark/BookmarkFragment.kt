@@ -29,6 +29,7 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
         return fragmentBookmarkBinding.root
     }
 
+    @Suppress("NAME_SHADOWING")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,7 +40,13 @@ class BookmarkFragment : Fragment(), BookmarkFragmentCallback {
             val courses = viewModel.getBookmark()
 
             val adapter = BookmarkAdapter(this)
-            adapter.setCourses(courses)
+
+            fragmentBookmarkBinding.progressBar.visibility = View.VISIBLE
+            viewModel.getBookmark().observe(this, { courses ->
+                fragmentBookmarkBinding.progressBar.visibility = View.GONE
+                adapter.setCourses(courses)
+                adapter.notifyDataSetChanged()
+            })
 
             with(fragmentBookmarkBinding.rvBookmark) {
                 layoutManager = LinearLayoutManager(context)
